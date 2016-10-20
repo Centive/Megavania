@@ -1,0 +1,373 @@
+fileFormatVersion: 2
+guid: a9ff0ee497fd14549b4717ff71d252c8
+timeCreated: 1476949614
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: PlayerRunLoop_SpriteSheet_0
+    21300002: PlayerRunLoop_SpriteSheet_1
+    21300004: PlayerRunLoop_SpriteSheet_2
+    21300006: PlayerRunLoop_SpriteSheet_3
+    21300008: PlayerRunLoop_SpriteSheet_4
+    21300010: PlayerRunLoop_SpriteSheet_5
+    21300012: PlayerRunLoop_SpriteSheet_6
+    21300014: PlayerRunLoop_SpriteSheet_7
+    21300016: PlayerRunLoop_SpriteSheet_8
+    21300018: PlayerRunLoop_SpriteSheet_9
+    21300020: PlayerRunLoop_SpriteSheet_10
+    21300022: PlayerRunLoop_SpriteSheet_11
+    21300024: PlayerRunLoop_SpriteSheet_12
+    21300026: PlayerRunLoop_SpriteSheet_13
+    21300028: PlayerRunLoop_SpriteSheet_14
+    21300030: PlayerRunLoop_SpriteSheet_15
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: PlayerRunLoop_SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 64
+        width: 48
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.58}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 19.32}
+        - {x: -24, y: 2.3199997}
+        - {x: -24, y: -14.68}
+        - {x: -1, y: -26.68}
+        - {x: 23, y: -26.68}
+        - {x: 23, y: 19.32}
+    - name: PlayerRunLoop_SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 64
+        width: 45
+        height: 47
+      alignment: 9
+      pivot: {x: 0.5, y: 0.58}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6.5, y: 19.740005}
+        - {x: -22.5, y: -2.2599945}
+        - {x: -22.5, y: -13.2599945}
+        - {x: -18.5, y: -13.2599945}
+        - {x: 6.5, y: -27.259995}
+        - {x: 22.5, y: -27.259995}
+        - {x: 22.5, y: 19.740005}
+    - name: PlayerRunLoop_SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 64
+        width: 40
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.56}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9, y: 21.119995}
+        - {x: -20, y: 12.119995}
+        - {x: -20, y: -19.880005}
+        - {x: -13, y: -26.880005}
+        - {x: 18, y: -26.880005}
+        - {x: 20, y: -15.880005}
+        - {x: 20, y: 21.119995}
+    - name: PlayerRunLoop_SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 64
+        width: 37
+        height: 49
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7.5, y: 22.050003}
+        - {x: -12.5, y: 13.050003}
+        - {x: -18.5, y: -2.949997}
+        - {x: -18.5, y: -22.949997}
+        - {x: -8.5, y: -26.949997}
+        - {x: 8.5, y: -26.949997}
+        - {x: 15.5, y: -4.949997}
+        - {x: 18.5, y: 10.050003}
+        - {x: 18.5, y: 22.050003}
+    - name: PlayerRunLoop_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 64
+        width: 32
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.56}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16, y: 21.119995}
+        - {x: -1, y: 21.119995}
+        - {x: -16, y: 6.119995}
+        - {x: -16, y: -21.880005}
+        - {x: -13, y: -26.880005}
+        - {x: -2, y: -26.880005}
+        - {x: -2, y: -23.880005}
+        - {x: 11, y: -5.880005}
+        - {x: 16, y: 9.119995}
+    - name: PlayerRunLoop_SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 64
+        width: 33
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.58}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2.5, y: 20.160004}
+        - {x: -0.5, y: 18.160004}
+        - {x: -14.5, y: 1.1600037}
+        - {x: -16.5, y: -14.839996}
+        - {x: -16.5, y: -27.839996}
+        - {x: -2.5, y: -27.839996}
+        - {x: 7.5, y: -20.839996}
+        - {x: 16.5, y: 5.1600037}
+        - {x: 16.5, y: 20.160004}
+    - name: PlayerRunLoop_SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 63
+        width: 38
+        height: 47
+      alignment: 9
+      pivot: {x: 0.5, y: 0.58}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11, y: -14.2599945}
+        - {x: 19, y: 14.7400055}
+        - {x: 19, y: 18.740005}
+        - {x: 18, y: 19.740005}
+        - {x: 5, y: 19.740005}
+        - {x: -14, y: 4.7400055}
+        - {x: -19, y: -9.2599945}
+        - {x: -19, y: -27.259995}
+        - {x: -12, y: -27.259995}
+        - {x: -11, y: -26.259995}
+        - {x: -11, y: -23.259995}
+        - {x: -4, y: -24.259995}
+    - name: PlayerRunLoop_SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 65
+        width: 48
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5, y: 0.58}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: 1.9000015}
+        - {x: -24, y: -26.099998}
+        - {x: 24, y: -26.099998}
+        - {x: 24, y: 18.900002}
+        - {x: 2, y: 18.900002}
+        - {x: -3, y: 17.900002}
+    - name: PlayerRunLoop_SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 48
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5, y: 0.58}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: 4.9000015}
+        - {x: -24, y: -16.099998}
+        - {x: 5, y: -26.099998}
+        - {x: 24, y: -26.099998}
+        - {x: 24, y: 18.900002}
+        - {x: -7, y: 18.900002}
+    - name: PlayerRunLoop_SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 0
+        width: 45
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.58}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4.5, y: 19.320002}
+        - {x: -22.5, y: 13.320002}
+        - {x: -22.5, y: -21.679998}
+        - {x: -18.5, y: -26.679998}
+        - {x: 22.5, y: -26.679998}
+        - {x: 22.5, y: 19.320002}
+    - name: PlayerRunLoop_SpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 0
+        width: 41
+        height: 47
+      alignment: 9
+      pivot: {x: 0.5, y: 0.58}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3.5, y: 19.740002}
+        - {x: -5.5, y: 16.740002}
+        - {x: -20.5, y: -2.2599983}
+        - {x: -20.5, y: -14.259998}
+        - {x: -18.5, y: -14.259998}
+        - {x: -1.5, y: -27.259998}
+        - {x: 13.5, y: -27.259998}
+        - {x: 20.5, y: 0.7400017}
+        - {x: 20.5, y: 19.740002}
+    - name: PlayerRunLoop_SpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 0
+        width: 38
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.56}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 10.119999}
+        - {x: -19, y: -21.880001}
+        - {x: -16, y: -26.880001}
+        - {x: 10, y: -26.880001}
+        - {x: 19, y: 3.119999}
+        - {x: 19, y: 21.119999}
+        - {x: 6, y: 21.119999}
+        - {x: -5, y: 17.119999}
+    - name: PlayerRunLoop_SpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 0
+        width: 33
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.56}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16.5, y: 1.1199989}
+        - {x: -16.5, y: -23.880001}
+        - {x: -15.5, y: -26.880001}
+        - {x: 1.5, y: -26.880001}
+        - {x: 16.5, y: 8.119999}
+        - {x: 16.5, y: 21.119999}
+        - {x: -0.5, y: 21.119999}
+        - {x: -6.5, y: 19.119999}
+    - name: PlayerRunLoop_SpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 0
+        width: 32
+        height: 47
+      alignment: 9
+      pivot: {x: 0.5, y: 0.56}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 1, y: 20.68}
+        - {x: -12, y: 14.68}
+        - {x: -16, y: -2.3199997}
+        - {x: -16, y: -26.32}
+        - {x: -4, y: -26.32}
+        - {x: 10, y: -19.32}
+        - {x: 16, y: -6.3199997}
+        - {x: 16, y: 20.68}
+    - name: PlayerRunLoop_SpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 0
+        width: 37
+        height: 47
+      alignment: 9
+      pivot: {x: 0.5, y: 0.56}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12.5, y: 20.68}
+        - {x: -18.5, y: 2.6800003}
+        - {x: -18.5, y: -26.32}
+        - {x: -5.5, y: -26.32}
+        - {x: 18.5, y: -10.32}
+        - {x: 18.5, y: 20.68}
+    - name: PlayerRunLoop_SpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 1
+        width: 44
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.56}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 20.24}
+        - {x: -22, y: 2.2399998}
+        - {x: -22, y: -20.76}
+        - {x: -16, y: -23.76}
+        - {x: -8, y: -25.76}
+        - {x: 13, y: -25.76}
+        - {x: 22, y: -7.76}
+        - {x: 22, y: 20.24}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

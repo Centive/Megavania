@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: 7de72f92da0e3de4ea3dd30d2a3b9b85
+timeCreated: 1476945056
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: PlayerFlyRightStart_SpriteSheet_0
+    21300002: PlayerFlyRightStart_SpriteSheet_1
+    21300004: PlayerFlyRightStart_SpriteSheet_2
+    21300006: PlayerFlyRightStart_SpriteSheet_3
+    21300008: PlayerFlyRightStart_SpriteSheet_4
+    21300010: PlayerFlyRightStart_SpriteSheet_5
+    21300012: PlayerFlyRightStart_SpriteSheet_6
+    21300014: PlayerFlyRightStart_SpriteSheet_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: PlayerFlyRightStart_SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 33
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12.5, y: 26}
+        - {x: -16.5, y: 22}
+        - {x: -16.5, y: -8}
+        - {x: -3.5, y: -26}
+        - {x: 9.5, y: -26}
+        - {x: 16.5, y: -2}
+        - {x: 16.5, y: 16}
+        - {x: 9.5, y: 26}
+    - name: PlayerFlyRightStart_SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1
+        width: 33
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9.5, y: 26}
+        - {x: -16.5, y: 21}
+        - {x: -16.5, y: -3}
+        - {x: -1.5, y: -26}
+        - {x: 7.5, y: -26}
+        - {x: 16.5, y: -5}
+        - {x: 16.5, y: 19}
+        - {x: 14.5, y: 26}
+    - name: PlayerFlyRightStart_SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 0
+        width: 33
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7.5, y: 26.5}
+        - {x: -16.5, y: 20.5}
+        - {x: -16.5, y: -1.5}
+        - {x: -5.5, y: -26.5}
+        - {x: 3.5, y: -26.5}
+        - {x: 16.5, y: 1.5}
+        - {x: 16.5, y: 19.5}
+        - {x: 10.5, y: 26.5}
+    - name: PlayerFlyRightStart_SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 2
+        width: 31
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PlayerFlyRightStart_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 3
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PlayerFlyRightStart_SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 3
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PlayerFlyRightStart_SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 3
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PlayerFlyRightStart_SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 3
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

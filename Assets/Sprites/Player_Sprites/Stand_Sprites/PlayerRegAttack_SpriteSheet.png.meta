@@ -1,0 +1,280 @@
+fileFormatVersion: 2
+guid: 69496dc45506e8e4aac89b95b93f558a
+timeCreated: 1476949292
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: PlayerRegAttack_SpriteSheet_0
+    21300002: PlayerRegAttack_SpriteSheet_1
+    21300004: PlayerRegAttack_SpriteSheet_2
+    21300006: PlayerRegAttack_SpriteSheet_3
+    21300008: PlayerRegAttack_SpriteSheet_4
+    21300010: PlayerRegAttack_SpriteSheet_5
+    21300012: PlayerRegAttack_SpriteSheet_6
+    21300014: PlayerRegAttack_SpriteSheet_7
+    21300016: PlayerRegAttack_SpriteSheet_8
+    21300018: PlayerRegAttack_SpriteSheet_9
+    21300020: PlayerRegAttack_SpriteSheet_10
+    21300022: PlayerRegAttack_SpriteSheet_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: PlayerRegAttack_SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 128
+        width: 19
+        height: 60
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PlayerRegAttack_SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 128
+        width: 25
+        height: 60
+      alignment: 9
+      pivot: {x: 0.4, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: PlayerRegAttack_SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 128
+        width: 57
+        height: 52
+      alignment: 9
+      pivot: {x: 0.5, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16.5, y: 24.960007}
+        - {x: -28.5, y: 21.960007}
+        - {x: -28.5, y: 16.960007}
+        - {x: -15.5, y: 13.960007}
+        - {x: -4.5, y: 13.960007}
+        - {x: -5.5, y: -0.039993286}
+        - {x: -12.5, y: -24.039993}
+        - {x: -13.5, y: -27.039993}
+        - {x: 27.5, y: -27.039993}
+        - {x: 28.5, y: -23.039993}
+        - {x: 28.5, y: 18.960007}
+        - {x: 23.5, y: 24.960007}
+    - name: PlayerRegAttack_SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 128
+        width: 90
+        height: 51
+      alignment: 9
+      pivot: {x: 0.11, y: 0.53}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8.100006, y: 23.970001}
+        - {x: -7.899994, y: 14.970001}
+        - {x: -9.899994, y: 9.970001}
+        - {x: -9.899994, y: -27.029999}
+        - {x: 41.100006, y: -27.029999}
+        - {x: 80.100006, y: -10.029999}
+        - {x: 80.100006, y: 13.970001}
+        - {x: 47.100006, y: 23.970001}
+    - name: PlayerRegAttack_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 64
+        width: 97
+        height: 50
+      alignment: 9
+      pivot: {x: 0.1, y: 0.54}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 87.3, y: 8}
+        - {x: 87.3, y: 23}
+        - {x: 17.3, y: 23}
+        - {x: 11.299999, y: 19}
+        - {x: -9.700001, y: -18}
+        - {x: -9.700001, y: -27}
+        - {x: 58.3, y: -27}
+    - name: PlayerRegAttack_SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 64
+        width: 46
+        height: 49
+      alignment: 9
+      pivot: {x: 0.22, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 35.880005, y: -11.949997}
+        - {x: 35.880005, y: 14.050003}
+        - {x: 30.880005, y: 22.050003}
+        - {x: -10.119995, y: 22.050003}
+        - {x: -10.119995, y: -26.949997}
+        - {x: -3.119995, y: -26.949997}
+        - {x: -3.119995, y: -23.949997}
+        - {x: 13.880005, y: -26.949997}
+        - {x: 30.880005, y: -26.949997}
+    - name: PlayerRegAttack_SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 64
+        width: 50
+        height: 48
+      alignment: 9
+      pivot: {x: 0.26, y: 0.56}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 21.119995}
+        - {x: -13, y: -26.880005}
+        - {x: 32, y: -26.880005}
+        - {x: 37, y: -6.880005}
+        - {x: 37, y: 11.119995}
+        - {x: 34, y: 21.119995}
+    - name: PlayerRegAttack_SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 64
+        width: 50
+        height: 46
+      alignment: 9
+      pivot: {x: 0.26, y: 0.59}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 18.86}
+        - {x: -13, y: -27.14}
+        - {x: 37, y: -27.14}
+        - {x: 37, y: 13.860001}
+        - {x: 34, y: 18.86}
+    - name: PlayerRegAttack_SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 49
+        height: 46
+      alignment: 9
+      pivot: {x: 0.21, y: 0.59}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 1.71, y: 18.86}
+        - {x: -10.29, y: 17.86}
+        - {x: -10.29, y: 9.860001}
+        - {x: -2.29, y: 8.860001}
+        - {x: -10.29, y: -13.139999}
+        - {x: -10.29, y: -27.14}
+        - {x: 38.71, y: -27.14}
+        - {x: 38.71, y: 6.8600006}
+        - {x: 32.71, y: 18.86}
+    - name: PlayerRegAttack_SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 52
+        height: 46
+      alignment: 9
+      pivot: {x: 0.23, y: 0.59}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2.0399933, y: 18.86}
+        - {x: -11.960007, y: 17.86}
+        - {x: -11.960007, y: -27.14}
+        - {x: 32.039993, y: -27.14}
+        - {x: 39.039993, y: -5.1399994}
+        - {x: 39.039993, y: 5.8600006}
+        - {x: 32.039993, y: 18.86}
+    - name: PlayerRegAttack_SpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 0
+        width: 43
+        height: 50
+      alignment: 9
+      pivot: {x: 0.3, y: 0.54}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 27.100006, y: 22.999998}
+        - {x: 8.100006, y: 22.999998}
+        - {x: -10.899994, y: 14.999998}
+        - {x: -12.899994, y: 11.999998}
+        - {x: -12.899994, y: 3.999998}
+        - {x: -4.899994, y: 1.9999981}
+        - {x: -8.899994, y: -11.000002}
+        - {x: -12.899994, y: -27.000002}
+        - {x: 29.100006, y: -27.000002}
+        - {x: 30.100006, y: -21.000002}
+        - {x: 30.100006, y: 11.999998}
+    - name: PlayerRegAttack_SpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 0
+        width: 33
+        height: 53
+      alignment: 9
+      pivot: {x: 0.3, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5.100006, y: 25.970001}
+        - {x: -9.899994, y: 8.970001}
+        - {x: -9.899994, y: -27.029999}
+        - {x: 23.100006, y: -27.029999}
+        - {x: 23.100006, y: 25.970001}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
