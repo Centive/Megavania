@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 2578841b5a91fa846889ab061894cc57
-timeCreated: 1476944955
+timeCreated: 1477078005
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -65,8 +65,8 @@ TextureImporter:
         y: 1
         width: 20
         height: 52
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.52}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: PlayerRunStart_SpriteSheet_1
@@ -76,8 +76,8 @@ TextureImporter:
         y: 0
         width: 28
         height: 52
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.52}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: PlayerRunStart_SpriteSheet_2
@@ -87,18 +87,18 @@ TextureImporter:
         y: 0
         width: 35
         height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 3.5, y: 25.5}
-        - {x: -16.5, y: 17.5}
-        - {x: -17.5, y: 0.5}
-        - {x: -17.5, y: -25.5}
-        - {x: -4.5, y: -25.5}
-        - {x: 12.5, y: -12.5}
-        - {x: 17.5, y: -7.5}
-        - {x: 17.5, y: 25.5}
+      - - {x: 3.5, y: 23.970001}
+        - {x: -16.5, y: 15.970001}
+        - {x: -17.5, y: -1.0299988}
+        - {x: -17.5, y: -27.029999}
+        - {x: -4.5, y: -27.029999}
+        - {x: 12.5, y: -14.029999}
+        - {x: 17.5, y: -9.029999}
+        - {x: 17.5, y: 23.970001}
     - name: PlayerRunStart_SpriteSheet_3
       rect:
         serializedVersion: 2
@@ -106,23 +106,23 @@ TextureImporter:
         y: 0
         width: 37
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.57}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 18.5, y: 24}
-        - {x: -8.5, y: 24}
-        - {x: -12.5, y: 19}
-        - {x: -9.5, y: 10}
-        - {x: -5.5, y: 10}
-        - {x: -1.5, y: 13}
-        - {x: -11.5, y: 5}
-        - {x: -18.5, y: -7}
-        - {x: -18.5, y: -24}
-        - {x: -9.5, y: -24}
-        - {x: -9.5, y: -22}
-        - {x: 10.5, y: -14}
-        - {x: 18.5, y: -5}
+      - - {x: 18.5, y: 20.64}
+        - {x: -8.5, y: 20.64}
+        - {x: -12.5, y: 15.639999}
+        - {x: -9.5, y: 6.6399994}
+        - {x: -5.5, y: 6.6399994}
+        - {x: -1.5, y: 9.639999}
+        - {x: -11.5, y: 1.6399994}
+        - {x: -18.5, y: -10.360001}
+        - {x: -18.5, y: -27.36}
+        - {x: -9.5, y: -27.36}
+        - {x: -9.5, y: -25.36}
+        - {x: 10.5, y: -17.36}
+        - {x: 18.5, y: -8.360001}
     - name: PlayerRunStart_SpriteSheet_4
       rect:
         serializedVersion: 2
@@ -130,17 +130,17 @@ TextureImporter:
         y: 0
         width: 38
         height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.59}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -10, y: 23}
-        - {x: -16, y: 19}
-        - {x: -19, y: 1}
-        - {x: -19, y: -23}
-        - {x: 10, y: -23}
-        - {x: 19, y: -10}
-        - {x: 19, y: 23}
+      - - {x: -10, y: 18.86}
+        - {x: -16, y: 14.860001}
+        - {x: -19, y: -3.1399994}
+        - {x: -19, y: -27.14}
+        - {x: 10, y: -27.14}
+        - {x: 19, y: -14.139999}
+        - {x: 19, y: 18.86}
     - name: PlayerRunStart_SpriteSheet_5
       rect:
         serializedVersion: 2
@@ -148,18 +148,18 @@ TextureImporter:
         y: 0
         width: 40
         height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 20, y: 22.5}
-        - {x: -17, y: 22.5}
-        - {x: -20, y: 12.5}
-        - {x: -20, y: -22.5}
-        - {x: -11, y: -22.5}
-        - {x: -11, y: -20.5}
-        - {x: 15, y: -9.5}
-        - {x: 20, y: -7.5}
+      - - {x: 20, y: 17.999998}
+        - {x: -17, y: 17.999998}
+        - {x: -20, y: 7.999998}
+        - {x: -20, y: -27.000002}
+        - {x: -11, y: -27.000002}
+        - {x: -11, y: -25.000002}
+        - {x: 15, y: -14.000002}
+        - {x: 20, y: -12.000002}
     - name: PlayerRunStart_SpriteSheet_6
       rect:
         serializedVersion: 2
@@ -167,26 +167,26 @@ TextureImporter:
         y: 0
         width: 42
         height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -6, y: -7.5}
-        - {x: -9, y: -10.5}
-        - {x: -9, y: -14.5}
-        - {x: -7, y: -19.5}
-        - {x: -2, y: -20.5}
-        - {x: 21, y: -6.5}
-        - {x: 21, y: 22.5}
-        - {x: -9, y: 22.5}
-        - {x: -15, y: 13.5}
-        - {x: -17, y: 8.5}
-        - {x: -21, y: -8.5}
-        - {x: -21, y: -22.5}
-        - {x: -12, y: -22.5}
-        - {x: -12, y: -20.5}
-        - {x: -13, y: -14.5}
-        - {x: -7, y: -7.5}
+      - - {x: -6, y: -12.000002}
+        - {x: -9, y: -15.000002}
+        - {x: -9, y: -19.000002}
+        - {x: -7, y: -24.000002}
+        - {x: -2, y: -25.000002}
+        - {x: 21, y: -11.000002}
+        - {x: 21, y: 17.999998}
+        - {x: -9, y: 17.999998}
+        - {x: -15, y: 8.999998}
+        - {x: -17, y: 3.999998}
+        - {x: -21, y: -13.000002}
+        - {x: -21, y: -27.000002}
+        - {x: -12, y: -27.000002}
+        - {x: -12, y: -25.000002}
+        - {x: -13, y: -19.000002}
+        - {x: -7, y: -12.000002}
     - name: PlayerRunStart_SpriteSheet_7
       rect:
         serializedVersion: 2
@@ -194,18 +194,18 @@ TextureImporter:
         y: 1
         width: 47
         height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -14.5, y: 22.5}
-        - {x: -23.5, y: 3.5}
-        - {x: -23.5, y: -17.5}
-        - {x: -17.5, y: -20.5}
-        - {x: -9.5, y: -22.5}
-        - {x: 14.5, y: -22.5}
-        - {x: 23.5, y: -15.5}
-        - {x: 23.5, y: 22.5}
+      - - {x: -14.5, y: 17.999998}
+        - {x: -23.5, y: -1.0000019}
+        - {x: -23.5, y: -22.000002}
+        - {x: -17.5, y: -25.000002}
+        - {x: -9.5, y: -27.000002}
+        - {x: 14.5, y: -27.000002}
+        - {x: 23.5, y: -20.000002}
+        - {x: 23.5, y: 17.999998}
     outline: []
   spritePackingTag: 
   userData: 

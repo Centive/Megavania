@@ -1,17 +1,16 @@
 fileFormatVersion: 2
-guid: 536c1ab68205cef4188930b16dad7eac
-timeCreated: 1476949938
+guid: 46290faae6f4c4a48be8b440fd522187
+timeCreated: 1477074952
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: PlayerJumpStart_SpriteSheet_0
-    21300002: PlayerJumpStart_SpriteSheet_1
-    21300004: PlayerJumpStart_SpriteSheet_2
-    21300006: PlayerJumpStart_SpriteSheet_3
-    21300008: PlayerJumpStart_SpriteSheet_4
-    21300010: PlayerJumpStart_SpriteSheet_5
-    21300012: PlayerJumpStart_SpriteSheet_6
-    21300014: PlayerJumpStart_SpriteSheet_7
+    21300000: PlayerJumpMid_SpriteSheet_0
+    21300002: PlayerJumpMid_SpriteSheet_1
+    21300004: PlayerJumpMid_SpriteSheet_2
+    21300006: PlayerJumpMid_SpriteSheet_3
+    21300008: PlayerJumpMid_SpriteSheet_4
+    21300010: PlayerJumpMid_SpriteSheet_5
+    21300012: PlayerJumpMid_SpriteSheet_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -58,96 +57,65 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: PlayerJumpStart_SpriteSheet_0
+    - name: PlayerJumpMid_SpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 27
-        height: 34
+        height: 55
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: PlayerJumpStart_SpriteSheet_1
+    - name: PlayerJumpMid_SpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 50
+        x: 65
         y: 5
-        width: 40
-        height: 48
+        width: 24
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 18, y: 0}
-        - {x: 20, y: 6}
-        - {x: 20, y: 24}
-        - {x: 9, y: 24}
-        - {x: -5, y: 15}
-        - {x: -15, y: 6}
-        - {x: -13, y: 3}
-        - {x: -20, y: -11}
-        - {x: -20, y: -24}
-        - {x: -15, y: -24}
-        - {x: -14, y: -23}
-        - {x: 20, y: -11}
-        - {x: 20, y: -3}
-    - name: PlayerJumpStart_SpriteSheet_2
+      outline: []
+    - name: PlayerJumpMid_SpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 115
-        y: 8
-        width: 36
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 7, y: 23}
-        - {x: -11, y: 14}
-        - {x: -18, y: -1}
-        - {x: -18, y: -23}
-        - {x: 1, y: -23}
-        - {x: 18, y: -21}
-        - {x: 18, y: 23}
-    - name: PlayerJumpStart_SpriteSheet_3
-      rect:
-        serializedVersion: 2
-        x: 185
+        x: 128
         y: 14
-        width: 27
-        height: 41
+        width: 25
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: PlayerJumpStart_SpriteSheet_4
+    - name: PlayerJumpMid_SpriteSheet_3
       rect:
         serializedVersion: 2
-        x: 252
-        y: 16
+        x: 191
+        y: 18
         width: 26
-        height: 39
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: PlayerJumpStart_SpriteSheet_5
+    - name: PlayerJumpMid_SpriteSheet_4
       rect:
         serializedVersion: 2
-        x: 314
-        y: 13
+        x: 254
+        y: 15
         width: 30
-        height: 41
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: PlayerJumpStart_SpriteSheet_6
+    - name: PlayerJumpMid_SpriteSheet_5
       rect:
         serializedVersion: 2
-        x: 376
+        x: 316
         y: 8
         width: 32
         height: 44
@@ -163,10 +131,10 @@ TextureImporter:
         - {x: 16, y: -5}
         - {x: 16, y: 21}
         - {x: 15, y: 22}
-    - name: PlayerJumpStart_SpriteSheet_7
+    - name: PlayerJumpMid_SpriteSheet_6
       rect:
         serializedVersion: 2
-        x: 440
+        x: 380
         y: 2
         width: 33
         height: 50

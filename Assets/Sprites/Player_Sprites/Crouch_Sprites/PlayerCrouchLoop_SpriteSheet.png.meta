@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: bc2bee33f7509bc498d2abeb6865e46a
-timeCreated: 1476945038
+timeCreated: 1477076637
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -61,8 +61,8 @@ TextureImporter:
         y: 0
         width: 28
         height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.75}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: PlayerCrouchLoop_SpriteSheet_1
@@ -72,8 +72,8 @@ TextureImporter:
         y: 0
         width: 27
         height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: PlayerCrouchLoop_SpriteSheet_2
@@ -83,8 +83,8 @@ TextureImporter:
         y: 0
         width: 27
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.55, y: 0.85}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: PlayerCrouchLoop_SpriteSheet_3
@@ -94,8 +94,8 @@ TextureImporter:
         y: 0
         width: 28
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.55, y: 0.85}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     outline: []
