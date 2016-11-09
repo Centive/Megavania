@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
     void AirIn()
     {
         //jump
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K) && !isCrouching)
         {
             myAnimator.SetTrigger("jump!");
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpPower);
@@ -116,6 +116,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D col)
     {
+        Debug.Log("eyy");
         if(col.gameObject.tag == "Ground")
         {
             isGrounded = true;

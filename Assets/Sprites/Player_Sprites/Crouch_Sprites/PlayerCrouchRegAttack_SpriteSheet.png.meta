@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 5bf24f0d74e8b114f9ec8d8d61bda3d4
-timeCreated: 1476945041
+timeCreated: 1478653457
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -69,8 +69,8 @@ TextureImporter:
         y: 128
         width: 20
         height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.595}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: PlayerCrouchRegAttack_SpriteSheet_1
@@ -80,8 +80,8 @@ TextureImporter:
         y: 128
         width: 22
         height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.595}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: PlayerCrouchRegAttack_SpriteSheet_2
@@ -91,16 +91,16 @@ TextureImporter:
         y: 128
         width: 57
         height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -28.5, y: 20}
-        - {x: -28.5, y: -20}
-        - {x: 12.5, y: -20}
-        - {x: 28.5, y: -11}
-        - {x: 28.5, y: 9}
-        - {x: 17.5, y: 20}
+      - - {x: -28.5, y: 14}
+        - {x: -28.5, y: -26}
+        - {x: 12.5, y: -26}
+        - {x: 28.5, y: -17}
+        - {x: 28.5, y: 3}
+        - {x: 17.5, y: 14}
     - name: PlayerCrouchRegAttack_SpriteSheet_3
       rect:
         serializedVersion: 2
@@ -108,21 +108,21 @@ TextureImporter:
         y: 128
         width: 81
         height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.14, y: 0.67}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -15.5, y: 0.5}
-        - {x: -3.5, y: -6.5}
-        - {x: 40.5, y: -10.5}
-        - {x: 40.5, y: -2.5}
-        - {x: -6.5, y: 19.5}
-        - {x: -31.5, y: 19.5}
-        - {x: -40.5, y: 11.5}
-        - {x: -40.5, y: -19.5}
-        - {x: -16.5, y: -19.5}
-        - {x: -9.5, y: -6.5}
-        - {x: -11.5, y: -3.5}
+      - - {x: 13.660004, y: -6.130005}
+        - {x: 25.660004, y: -13.130005}
+        - {x: 69.66, y: -17.130005}
+        - {x: 69.66, y: -9.130005}
+        - {x: 22.660004, y: 12.869995}
+        - {x: -2.3399963, y: 12.869995}
+        - {x: -11.339996, y: 4.869995}
+        - {x: -11.339996, y: -26.130005}
+        - {x: 12.660004, y: -26.130005}
+        - {x: 19.660004, y: -13.130005}
+        - {x: 17.660004, y: -10.130005}
     - name: PlayerCrouchRegAttack_SpriteSheet_4
       rect:
         serializedVersion: 2
@@ -130,23 +130,23 @@ TextureImporter:
         y: 64
         width: 84
         height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.11, y: 0.67}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -16, y: -1.5}
-        - {x: 24, y: -8.5}
-        - {x: 42, y: -10.5}
-        - {x: 42, y: -5.5}
-        - {x: -15, y: 19.5}
-        - {x: -31, y: 19.5}
-        - {x: -34, y: 15.5}
-        - {x: -41, y: -2.5}
-        - {x: -42, y: -6.5}
-        - {x: -42, y: -19.5}
-        - {x: -20, y: -19.5}
-        - {x: -17, y: -16.5}
-        - {x: -14, y: -1.5}
+      - - {x: 16.760002, y: -8.130005}
+        - {x: 56.760002, y: -15.130005}
+        - {x: 74.76, y: -17.130005}
+        - {x: 74.76, y: -12.130005}
+        - {x: 17.760002, y: 12.869995}
+        - {x: 1.7600021, y: 12.869995}
+        - {x: -1.2399979, y: 8.869995}
+        - {x: -8.239998, y: -9.130005}
+        - {x: -9.239998, y: -13.130005}
+        - {x: -9.239998, y: -26.130005}
+        - {x: 12.760002, y: -26.130005}
+        - {x: 15.760002, y: -23.130005}
+        - {x: 18.760002, y: -8.130005}
     - name: PlayerCrouchRegAttack_SpriteSheet_5
       rect:
         serializedVersion: 2
@@ -154,16 +154,16 @@ TextureImporter:
         y: 64
         width: 44
         height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.68}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -22, y: 19}
-        - {x: -22, y: -1}
-        - {x: -14, y: -19}
-        - {x: 22, y: -19}
-        - {x: 22, y: 11}
-        - {x: 18, y: 19}
+      - - {x: -22, y: 12.160004}
+        - {x: -22, y: -7.8399963}
+        - {x: -14, y: -25.839996}
+        - {x: 22, y: -25.839996}
+        - {x: 22, y: 4.1600037}
+        - {x: 18, y: 12.160004}
     - name: PlayerCrouchRegAttack_SpriteSheet_6
       rect:
         serializedVersion: 2
@@ -171,17 +171,17 @@ TextureImporter:
         y: 64
         width: 50
         height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.54, y: 0.73}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -25, y: 18}
-        - {x: -25, y: 3}
-        - {x: -15, y: -18}
-        - {x: 18, y: -18}
-        - {x: 25, y: -11}
-        - {x: 25, y: 14}
-        - {x: 24, y: 18}
+      - - {x: -27, y: 9.720001}
+        - {x: -27, y: -5.279999}
+        - {x: -17, y: -26.279999}
+        - {x: 16, y: -26.279999}
+        - {x: 23, y: -19.279999}
+        - {x: 23, y: 5.720001}
+        - {x: 22, y: 9.720001}
     - name: PlayerCrouchRegAttack_SpriteSheet_7
       rect:
         serializedVersion: 2
@@ -189,36 +189,36 @@ TextureImporter:
         y: 64
         width: 50
         height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.54, y: 0.74}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -25, y: 17.5}
-        - {x: -25, y: -0.5}
-        - {x: -15, y: -17.5}
-        - {x: 21, y: -17.5}
-        - {x: 25, y: -12.5}
-        - {x: 25, y: 9.5}
-        - {x: 22, y: 17.5}
+      - - {x: -27, y: 9.099998}
+        - {x: -27, y: -8.900002}
+        - {x: -17, y: -25.900002}
+        - {x: 19, y: -25.900002}
+        - {x: 23, y: -20.900002}
+        - {x: 23, y: 1.0999985}
+        - {x: 20, y: 9.099998}
     - name: PlayerCrouchRegAttack_SpriteSheet_8
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
         width: 49
         height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.52, y: 0.74}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -10.5, y: 17.5}
-        - {x: -24.5, y: 16.5}
-        - {x: -24.5, y: -1.5}
-        - {x: -21.5, y: -15.5}
-        - {x: -17.5, y: -17.5}
-        - {x: 24.5, y: -17.5}
-        - {x: 24.5, y: 5.5}
-        - {x: 20.5, y: 17.5}
+      - - {x: -9.48, y: 9.1}
+        - {x: -25.48, y: 8.1}
+        - {x: -25.48, y: -13.9}
+        - {x: -20.48, y: -25.9}
+        - {x: 19.52, y: -25.9}
+        - {x: 23.52, y: -20.9}
+        - {x: 23.52, y: -0.8999996}
+        - {x: 17.52, y: 9.1}
     - name: PlayerCrouchRegAttack_SpriteSheet_9
       rect:
         serializedVersion: 2
@@ -226,16 +226,16 @@ TextureImporter:
         y: 0
         width: 49
         height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.52, y: 0.74}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -24.5, y: 17.5}
-        - {x: -24.5, y: -2.5}
-        - {x: -21.5, y: -14.5}
-        - {x: -16.5, y: -17.5}
-        - {x: 24.5, y: -17.5}
-        - {x: 24.5, y: 17.5}
+      - - {x: -25.479996, y: 9.1}
+        - {x: -25.479996, y: -10.9}
+        - {x: -22.479996, y: -22.9}
+        - {x: -17.479996, y: -25.9}
+        - {x: 23.520004, y: -25.9}
+        - {x: 23.520004, y: 9.1}
     - name: PlayerCrouchRegAttack_SpriteSheet_10
       rect:
         serializedVersion: 2
@@ -243,21 +243,21 @@ TextureImporter:
         y: 0
         width: 45
         height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.55, y: 0.74}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 0.5, y: 18}
-        - {x: -14.5, y: 14}
-        - {x: -22.5, y: 8}
-        - {x: -22.5, y: 1}
-        - {x: -14.5, y: -1}
-        - {x: -8.5, y: -17}
-        - {x: -7.5, y: -18}
-        - {x: 18.5, y: -18}
-        - {x: 22.5, y: -17}
-        - {x: 22.5, y: 15}
-        - {x: 21.5, y: 18}
+      - - {x: -1.75, y: 9.360001}
+        - {x: -16.75, y: 5.3600006}
+        - {x: -24.75, y: -0.6399994}
+        - {x: -24.75, y: -7.6399994}
+        - {x: -16.75, y: -9.639999}
+        - {x: -10.75, y: -25.64}
+        - {x: -9.75, y: -26.64}
+        - {x: 16.25, y: -26.64}
+        - {x: 20.25, y: -25.64}
+        - {x: 20.25, y: 6.3600006}
+        - {x: 19.25, y: 9.360001}
     - name: PlayerCrouchRegAttack_SpriteSheet_11
       rect:
         serializedVersion: 2
@@ -265,17 +265,17 @@ TextureImporter:
         y: 0
         width: 32
         height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.4, y: 0.74}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 5, y: 18}
-        - {x: -14, y: 4}
-        - {x: -16, y: -1}
-        - {x: -16, y: -13}
-        - {x: -13, y: -18}
-        - {x: 16, y: -18}
-        - {x: 16, y: 18}
+      - - {x: 8.200012, y: 9.360001}
+        - {x: -10.799988, y: -4.6399994}
+        - {x: -12.799988, y: -9.639999}
+        - {x: -12.799988, y: -21.64}
+        - {x: -9.799988, y: -26.64}
+        - {x: 19.200012, y: -26.64}
+        - {x: 19.200012, y: 9.360001}
     outline: []
   spritePackingTag: 
   userData: 
