@@ -1,20 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerKnife : MonoBehaviour {
-
-    public GameObject player;
-    public float bulletSpeed = 12.0f;
+public class Boss1_Bullet1_Behavior : MonoBehaviour
+{
+    public float MaxBulletDSpeed = 0.7f;
+    public float MaxBulletFSpeed = 2f;
+    public float bulletSpeed;
     public float killBulletTimer = 0.2f;
+    public float bulletDelay = 1f;
 
+    // Use this for initialization
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        bulletSpeed = player.GetComponent<PlayerController>().isFacingLeft ? bulletSpeed * -1.0f : bulletSpeed;
+        bulletSpeed = MaxBulletDSpeed;
     }
 
+    // Update is called once per frame
     void Update()
     {
+        bulletDelay -= Time.deltaTime;
+
+        if (bulletDelay <= 0f)
+            bulletSpeed = MaxBulletFSpeed;
+
+        //move bullet
         Vector3 pos = transform.position;
         Vector3 velocity = new Vector3(bulletSpeed * Time.deltaTime, 0.0f);
 
@@ -22,6 +31,7 @@ public class PlayerKnife : MonoBehaviour {
         transform.position = pos;
 
 
+        //Kill bullet
         killBulletTimer -= Time.deltaTime;
         if (killBulletTimer <= 0)
         {

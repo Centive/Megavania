@@ -3,155 +3,282 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+
     //variables
-    public float            maxMoveSpeed    = 5f;
-    public float            moveSpeed       = 5f;
-    public float            jumpPower       = 5f;
-    public float            xMovement;         
-    public float            yMovement;
-    public bool             isGrounded;
-    public bool             isCrouching;
-    public bool             isFlying;
-    public bool             isAttacking;
-    public bool             isFacingLeft    = false;
+    public float maxMoveSpeed = 5f;
+    public float moveSpeed = 5f;
+    public float jumpPower = 5f;
+    public bool isFacingLeft = false;
+    public bool isFalling = false;
 
     //components
-    public Animator         myAnimator;
-    public Rigidbody2D      myRigidbody;
-    public SpriteRenderer   myRenderer;
+    public Animator myAnimator;
+    public Rigidbody2D myRigidbody;
 
     //prefabs
-    public GameObject       knifePrefab;
+    public GameObject knifePrefab;
+
+    //Player Handler
+    private PlayerHandler pHandler;
 
     void Start()
     {
         //get components
-        myAnimator      = GetComponent<Animator>();
-        myRigidbody     = GetComponent<Rigidbody2D>();
-        myRenderer      = GetComponent<SpriteRenderer>();
+        myAnimator = GetComponent<Animator>();
+        myRigidbody = GetComponent<Rigidbody2D>();
+        pHandler = GetComponent<PlayerHandler>();
 
         //init vars
-        moveSpeed       = maxMoveSpeed;
-        isFlying        = false;
+        moveSpeed = maxMoveSpeed;
     }
-    
+
     void Update()
     {
-        CancelMovements();
-        FlyIn();
-        GroundIn();
-        AirIn();
-        CrouchingIn();
-        if (!isAirRegAttack() && !isCrouchRegAttack() && !isRegAttack())
-        {
-            FlipSprite();
-        }
+        //Enable Controls
+        Controls();
+
+        myAnimator.SetFloat("VelocityY", myRigidbody.velocity.y);
     }
 
-    void FlipSprite()
+    void Controls()
     {
-        if (xMovement < 0)
-        {
-            Vector3 currentScale = transform.localScale;
-            currentScale.x = -1;
-            transform.localScale = currentScale;
-            isFacingLeft = true;
-        }
-        if (xMovement > 0)
-        {
-            Vector3 currentScale = transform.localScale;
-            currentScale.x = 1;
-            transform.localScale = currentScale;
-            isFacingLeft = false;
-        }
-    }      // Flips the gameobject
-    void GroundIn()
-    {
-        //get xy input
-        xMovement = (Input.GetAxisRaw("Horizontal") * moveSpeed);
-        yMovement = (isFlying) ? (Input.GetAxisRaw("Vertical") * moveSpeed) : myRigidbody.velocity.y;
-        
-        //move left or right
-        myRigidbody.velocity = new Vector2(xMovement, yMovement);
+        //Enable animations
+        myAnimator.SetInteger("State", (int)pHandler.curState);
 
-        //attack on ground
-        if (Input.GetButtonDown("SquareButton") && isGrounded && !isCrouching && !isRegAttack())
+        //Turn isKinematic to false whenever the player is not flying
+        if (pHandler.curState != PlayerHandler.Estate.OnFly)
         {
-            myAnimator.SetTrigger("regAttack!");
+            myRigidbody.gravityScale = 1;
         }
 
-        //knife
-        if(Input.GetButtonDown("RightBumper"))
+        //
+        switch (pHandler.curState)
         {
-            Instantiate(knifePrefab, transform.position + new Vector3(-0.3f, 0.0f, 0.0f), (Quaternion.identity));
+            case PlayerHandler.Estate.None:
+                {
+                    //Nothing
+                    break;
+                }
+            case PlayerHandler.Estate.OnGround:
+                {
+                    MovementsOnGround();
+                    AttacksOnGround();
+                    break;
+                }
+            case PlayerHandler.Estate.OnCrouch:
+                {
+                    MovementsOnCrouch();
+                    AttacksOnCrouch();
+                    break;
+                }//movOnGround & atks
+            case PlayerHandler.Estate.OnAir:
+                {
+                    MovementsOnAir();
+                    AttacksOnAir();
+                    break;
+                }//movOnAir & atks
+            case PlayerHandler.Estate.OnFly:
+                {
+                    MovementsOnFly();
+                    AttacksOnFly();
+                    break;
+                }//movOnFly & atks
         }
 
-        //set animations
-        myAnimator.SetFloat("xVelocity", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
-        myAnimator.SetFloat("yVelocity", myRigidbody.velocity.y);
-        myAnimator.SetBool("isGrounded", isGrounded);
-    }        // Controls available in the ground
-    void AirIn()
+        //
+        FlipSprite();
+    }
+
+    ////////////////////////////////////////////////////////////////////////
+    void MovementsOnGround()
     {
-        //jump
-        if (Input.GetButtonDown("XButton") && !isCrouching && isGrounded)
+        //Input
+        float xInput = Input.GetAxisRaw("Horizontal");
+        float yInput = Input.GetAxisRaw("Vertical");
+
+        //Move rigidbody on x-axis
+        myRigidbody.velocity = new Vector2(xInput * moveSpeed, myRigidbody.velocity.y);
+        myAnimator.SetFloat("Speed", Mathf.Abs(myRigidbody.velocity.x));
+
+        //Init Crouch
+        if (yInput < 0)
+        {
+            pHandler.curState = PlayerHandler.Estate.OnCrouch;
+        }
+        else
+        {
+            pHandler.curState = PlayerHandler.Estate.OnGround;
+        }
+
+        //Init Jump
+        if (Input.GetButtonDown("XButton"))
         {
             myAnimator.SetTrigger("jump!");
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpPower);
         }
-        
-        if(Input.GetButtonDown("SquareButton") && !isGrounded)
+
+    }
+    void MovementsOnCrouch()
+    {
+        float yInput = Input.GetAxisRaw("Vertical");
+
+        //Init OnGround
+        if (yInput >= 0)
+        {
+            pHandler.curState = PlayerHandler.Estate.OnGround;
+        }
+    }
+    void MovementsOnAir()
+    {
+        //Init Fly
+        if (Input.GetButtonDown("XButton"))
+        {
+            pHandler.curState = PlayerHandler.Estate.OnFly;
+        }
+
+        //Input
+        float xInput = Input.GetAxisRaw("Horizontal");
+
+        //Move rigidbody on x-axis
+        myRigidbody.velocity = new Vector2(xInput * moveSpeed, myRigidbody.velocity.y);
+    }
+    void MovementsOnFly()
+    {
+        //Always true when flying
+        myRigidbody.gravityScale = 0;
+
+        //Init OnAir
+        if (Input.GetButtonUp("XButton"))
+        {
+            pHandler.curState = PlayerHandler.Estate.OnAir;
+        }
+
+        //Input
+        float xInput = Input.GetAxisRaw("Horizontal");
+        float yInput = Input.GetAxisRaw("Vertical");
+
+        //Move
+        //Move rigidbody on x/y axis
+        myRigidbody.velocity = new Vector2(xInput * moveSpeed, yInput * moveSpeed);
+
+        myAnimator.SetInteger("xInput", (isFacingLeft) ? (int)xInput * -1 : (int)xInput);
+    }
+
+    void AttacksOnGround()
+    {
+        //Melee Attack
+        //Attack only when the animation is NOT playing - !isRegAttack()
+        if (Input.GetButtonDown("SquareButton") && !isRegAttack())
+        {
+            myAnimator.SetTrigger("regAttack!");
+        }
+
+        //Shoots a knife projectile
+        if (Input.GetButtonDown("RightBumper"))
+        {
+            Instantiate(knifePrefab, transform.position, (Quaternion.identity));
+        }
+    }
+    void AttacksOnCrouch()
+    {
+        //Melee Attack
+        //Attack only when the animation is NOT playing - !isCrouchRegAttack()
+        if (Input.GetButtonDown("SquareButton") && !isCrouchRegAttack())
+        {
+            myAnimator.SetTrigger("crouchAttack!");
+        }
+    }
+    void AttacksOnAir()
+    {
+        //Melee Attack
+        //Attack only when the animation is NOT playing - !isCrouchRegAttack()
+        if (Input.GetButtonDown("SquareButton"))
         {
             myAnimator.SetTrigger("airRegAttack!");
         }
-    }           // Controls available in the air
-    void CrouchingIn()
-    {
-        //set if player is crouching
-        if(!isFlying)
-        {
-            if (Input.GetAxisRaw("Vertical") < 0)
-            {
-                isCrouching = true;
-            }
-            else
-            {
-                isCrouching = false;
-            }
-        }
 
-        if (isCrouching)//actions while crouching
+        //Shoots a knife projectile
+        if (Input.GetButtonDown("RightBumper"))
         {
-            if (Input.GetButtonDown("SquareButton") && !isCrouchRegAttack())//crouching attack
-            {
-                myAnimator.SetTrigger("crouchAttack!");
-            }
+            Instantiate(knifePrefab, transform.position, (Quaternion.identity));
         }
-        //set animations
-        myAnimator.SetBool("isCrouching", isCrouching);
-    }     // Controls available while crouching
-    void FlyIn()
+    }
+    void AttacksOnFly()
     {
-        if(!isGrounded)
+        //Shoots a knife projectile
+        if (Input.GetButtonDown("RightBumper"))
         {
-            if(Input.GetButtonDown("XButton"))
-            {
-                isFlying = true;
-            }
+            Instantiate(knifePrefab, transform.position, (Quaternion.identity));
         }
-        if(isFlying)
+    }
+    ////////////////////////////////////////////////////////////////////////
+    void FlipSprite()
+    {
+        switch (pHandler.curState)
         {
-            myRigidbody.isKinematic = true;
-            if (Input.GetButtonUp("XButton"))
-            {
-                isFlying = false;
-            }
+            case PlayerHandler.Estate.None:
+                {
+                    //Nothing
+                    break;
+                }
+            case PlayerHandler.Estate.OnGround:
+            case PlayerHandler.Estate.OnCrouch:
+            case PlayerHandler.Estate.OnAir:
+                {
+                    //Input
+                    float xInput = Input.GetAxisRaw("Horizontal");
+
+                    Vector3 currentScale = transform.localScale;
+
+                    //Flip the x sprite moving left or right
+                    if (xInput < 0)
+                    {
+                        currentScale.x = -1;
+                        transform.localScale = currentScale;
+                        isFacingLeft = true;
+                    }
+
+                    if (xInput > 0)
+                    {
+                        currentScale.x = 1;
+                        transform.localScale = currentScale;
+                        isFacingLeft = false;
+                    }
+                    break;
+                }
+            case PlayerHandler.Estate.OnFly:
+                {
+                    //Dont Flip on fly
+                    break;
+                }
         }
-        else
-        {
-            myRigidbody.isKinematic = false;
-        }
-    }           // Controls available for flying
+    }
+    ////////////////////////////////////////////////////////////////////////
+    //Check if animations are playing
+    bool isRegAttack()
+    {
+        //if(myAnimator.GetCurrentAnimatorStateInfo(0).IsName("RegAttack"))
+        //{
+        //    moveSpeed = 0;
+        //}
+        //else
+        //{
+        //    moveSpeed = maxMoveSpeed;
+        //}
+
+        return (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("RegAttack"));
+    }
+    bool isAirRegAttack()
+    {
+        return (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Air_RegAttack"));
+    }
+    bool isCrouchRegAttack()
+    {
+        return (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Crouch_RegAttack"));
+    }
+    ////////////////////////////////////////////////////////////////////////
+
+    /*
     void CancelMovements()
     {
         if (isRegAttack() || isCrouching)
@@ -164,34 +291,5 @@ public class PlayerController : MonoBehaviour
             moveSpeed = maxMoveSpeed;
         }
     }
-
-    //Check if attack animations are playing
-    bool isRegAttack()
-    {
-        return (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("RegAttack"));
-    }
-    bool isAirRegAttack()
-    {
-        return (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Air_RegAttack"));
-    }
-    bool isCrouchRegAttack()
-    {
-        return (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Crouch_RegAttack"));
-    }
-
-    void OnCollisionStay2D(Collision2D col)
-    {
-        if(col.gameObject.tag == "Ground")
-        {
-            isGrounded = true;
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "Ground")
-        {
-            isGrounded = false;
-        }
-    }
+    */ //Quarantined CancelMovements()
 }
