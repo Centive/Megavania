@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Init Jump
-        if (Input.GetButtonDown("XButton"))
+        if(Input.GetKeyDown(KeyCode.K))//if (Input.GetButtonDown("XButton"))
         {
             myAnimator.SetTrigger("jump!");
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpPower);
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
     void MovementsOnAir()
     {
         //Init Fly
-        if (Input.GetButtonDown("XButton"))
+        if(Input.GetKeyDown(KeyCode.K))//if (Input.GetButtonDown("XButton"))
         {
             pHandler.curState = PlayerHandler.Estate.OnFly;
         }
@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
         myRigidbody.gravityScale = 0;
 
         //Init OnAir
-        if (Input.GetButtonUp("XButton"))
+        if (Input.GetKeyUp(KeyCode.K))//if (Input.GetButtonUp("XButton"))
         {
             pHandler.curState = PlayerHandler.Estate.OnAir;
         }
@@ -168,13 +168,13 @@ public class PlayerController : MonoBehaviour
     {
         //Melee Attack
         //Attack only when the animation is NOT playing - !isRegAttack()
-        if (Input.GetButtonDown("SquareButton") && !isRegAttack())
+        if (Input.GetKeyDown(KeyCode.J) && !isRegAttack())//if (Input.GetButtonDown("SquareButton") && !isRegAttack())
         {
             myAnimator.SetTrigger("regAttack!");
         }
 
         //Shoots a knife projectile
-        if (Input.GetButtonDown("RightBumper"))
+        if (Input.GetKeyDown(KeyCode.L))//if (Input.GetButtonDown("RightBumper"))
         {
             Instantiate(knifePrefab, transform.position, (Quaternion.identity));
         }
@@ -183,7 +183,7 @@ public class PlayerController : MonoBehaviour
     {
         //Melee Attack
         //Attack only when the animation is NOT playing - !isCrouchRegAttack()
-        if (Input.GetButtonDown("SquareButton") && !isCrouchRegAttack())
+        if (Input.GetKeyDown(KeyCode.J) && !isCrouchRegAttack())//if (Input.GetButtonDown("SquareButton") && !isCrouchRegAttack())
         {
             myAnimator.SetTrigger("crouchAttack!");
         }
@@ -192,13 +192,13 @@ public class PlayerController : MonoBehaviour
     {
         //Melee Attack
         //Attack only when the animation is NOT playing - !isCrouchRegAttack()
-        if (Input.GetButtonDown("SquareButton"))
+        if (Input.GetKeyDown(KeyCode.J))//if (Input.GetButtonDown("SquareButton"))
         {
             myAnimator.SetTrigger("airRegAttack!");
         }
 
         //Shoots a knife projectile
-        if (Input.GetButtonDown("RightBumper"))
+        if (Input.GetKeyDown(KeyCode.L))//if (Input.GetButtonDown("RightBumper"))
         {
             Instantiate(knifePrefab, transform.position, (Quaternion.identity));
         }
@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour
     void AttacksOnFly()
     {
         //Shoots a knife projectile
-        if (Input.GetButtonDown("RightBumper"))
+        if (Input.GetKeyDown(KeyCode.L))//if (Input.GetButtonDown("RightBumper"))
         {
             Instantiate(knifePrefab, transform.position, (Quaternion.identity));
         }
