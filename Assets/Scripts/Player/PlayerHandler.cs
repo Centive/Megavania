@@ -33,6 +33,18 @@ public class PlayerHandler : MonoBehaviour
         }
 	}
 
+    void FixedUpdate()
+    {
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up);
+        //if (hit.collider != null)
+        //{
+        //    //float distance = Mathf.Abs(hit.point.y - transform.position.y);
+        //    //float heightError = floatHeight - distance;
+        //    //float force = liftForce * heightError - rb2D.velocity.y * damping;
+        //    //rb2D.AddForce(Vector3.up * force);
+        //}
+    }
+
     /*
      * - isGround = true (if) colliding tag "Ground"
      */
