@@ -9,14 +9,14 @@ public class Enemy_Handler : MonoBehaviour
     {
         if(myHealth <= 0)
         {
-            Debug.Log(this.gameObject + ": is Dead");
+            Debug.Log(this.gameObject.name + ": is Dead");
             Destroy(this.gameObject);
         }
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("hit");
+        Debug.Log(this.gameObject.name + " is hit");
         if (col.gameObject.tag == "PlayerHit")
         {
             myHealth--;
@@ -25,7 +25,7 @@ public class Enemy_Handler : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("hit");
+        Debug.Log(this.gameObject.name + " is hit");
         if (col.gameObject.tag == "PlayerHit")
         {
             myHealth--;

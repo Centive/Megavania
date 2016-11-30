@@ -19,7 +19,7 @@ public class Boss1_Behavior : MonoBehaviour
     public GameObject attack1Prefab;
     public GameObject attack2Prefab;
     public GameObject attack3Prefab;
-
+    private EnemyBehavior_FollowTarget enemyFollow;
 
     void Start()
     {
@@ -118,26 +118,32 @@ public class Boss1_Behavior : MonoBehaviour
     {
         while (myHealth > 0)
         {
-            yield return new WaitForSeconds(6);
-            curBehavior = EBehavior.Move;
-            GetState();
-
-            yield return new WaitForSeconds(2);
-            curBehavior = EBehavior.Attack1;
-            GetState();
-            
-            yield return new WaitForSeconds(4);
-            curBehavior = EBehavior.Attack1;
-            GetState();
-
-            yield return new WaitForSeconds(1);
-            curBehavior = EBehavior.Move;
-            GetState();
-
-            yield return new WaitForSeconds(2);
-            curBehavior = EBehavior.Attack2;
-            GetState();
-
+            Debug.Log(this.gameObject.name + ": " + curBehavior);
+            yield return new WaitForSeconds(6); 
+            curBehavior = EBehavior.Move;       
+            GetState();                         
+                                                
+            Debug.Log(this.gameObject.name + ": " + curBehavior);
+            yield return new WaitForSeconds(2); 
+            curBehavior = EBehavior.Attack1;    
+            GetState();                         
+                                                
+            Debug.Log(this.gameObject.name + ": " + curBehavior);
+            yield return new WaitForSeconds(4); 
+            curBehavior = EBehavior.Attack1;    
+            GetState();                         
+                                                
+            Debug.Log(this.gameObject.name + ": " + curBehavior);
+            yield return new WaitForSeconds(1); 
+            curBehavior = EBehavior.Move;       
+            GetState();                         
+                                                
+            Debug.Log(this.gameObject.name + ": " + curBehavior);
+            yield return new WaitForSeconds(2); 
+            curBehavior = EBehavior.Attack2;    
+            GetState();                         
+                                                
+            Debug.Log(this.gameObject.name + ": " + curBehavior);
             yield return new WaitForSeconds(1);
             curBehavior = EBehavior.Attack3;
             GetState();

@@ -31,20 +31,23 @@ public class PlayerHandler : MonoBehaviour
             Debug.Log(this.gameObject + ": is Dead");
             Destroy(this.gameObject);
         }
-	}
 
-    void FixedUpdate()
-    {
-        //RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up);
-        //if (hit.collider != null)
-        //{
-        //    //float distance = Mathf.Abs(hit.point.y - transform.position.y);
-        //    //float heightError = floatHeight - distance;
-        //    //float force = liftForce * heightError - rb2D.velocity.y * damping;
-        //    //rb2D.AddForce(Vector3.up * force);
-        //}
+        //Debug.DrawRay(transform.position, forward, Color.green);
+        //
+        Vector2 direction = (pController.isFacingLeft) ? Vector2.left : -Vector2.left;
+        Debug.DrawRay(transform.position, direction, Color.green);
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction);
+        if (hit.collider.tag == "Ground" && hit.collider != null)
+        {
+            Debug.Log("hit");
+        }
+        else
+        {
+            Debug.Log("no hit");
+        }
     }
-
+    
     /*
      * - isGround = true (if) colliding tag "Ground"
      */

@@ -5,8 +5,9 @@ public class ShowDebugLogs : MonoBehaviour
 {
 
     static string myLog = "";
+    public int logCap = 20;
+    private int curLogs = 0;
     private string output = "";
-    private string stack = "";
 
 
     void OnEnable()
@@ -24,14 +25,22 @@ public class ShowDebugLogs : MonoBehaviour
 
     void HandleLog(string logString, string stackTrace, LogType type)
     {
-        output = logString;
-        stack = stackTrace;
-        myLog += "\n" + output;
+        //reset logs if hit cap
+        if (curLogs == logCap)
+        {
+            myLog = "";
+            curLogs = 0;
+        }
+
+        //
+        myLog += "\n [" + type + "] : " + logString;
+        curLogs++;
     }
 
 
     void OnGUI()
     {
-        myLog = GUI.TextField(new Rect(0, 0, 200, 300), myLog);
+        //display logs
+        GUILayout.Label(myLog);
     }
 }
