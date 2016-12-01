@@ -4,19 +4,22 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     //State machine for handling dash
-    private enum DashState
-    {
-        Ready,
-        Dashing,
-        Cooldown
-    }
+    //private enum DashState
+    //{
+    //    Ready,
+    //    Dashing,
+    //    Cooldown
+    //}
 
     //variables
     public float maxMoveSpeed = 5f;
     public float moveSpeed = 5f;
     public float jumpPower = 5f;
-    public float dodgeSpeed = 5f;
-    private DashState dashState = DashState.Ready;
+    public float maxDashSpeed = 0f;
+    public float dashTimer = 0f;
+    private float dashSpeed = 0f;
+    private bool isDashing = false;
+    //private DashState dashState = DashState.Ready;
 
     public bool isFacingLeft = false;
     public bool isFalling = false;
@@ -40,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
         //init vars
         moveSpeed = maxMoveSpeed;
+        dashSpeed = maxDashSpeed;
     }
 
     void Update()
@@ -97,11 +101,14 @@ public class PlayerController : MonoBehaviour
                         myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpPower);
                     }
 
+                    //init dash
+                    UpdateDashing();
+
                     //
 
                     //Melee Attack
-                    //Attack only when the animation is NOT playing - !isRegAttack()
-                    if (Input.GetKeyDown(KeyCode.J) && !isRegAttack())//if (Input.GetButtonDown("SquareButton") && !isRegAttack())
+                    //Attack only when the animation is NOT playing - !isGroundRegAttack()
+                    if (Input.GetKeyDown(KeyCode.J) && !isGroundRegAttack())//if (Input.GetButtonDown("SquareButton") && !isGroundRegAttack())
                     {
                         myAnimator.SetTrigger("regAttack!");
                     }
@@ -193,6 +200,51 @@ public class PlayerController : MonoBehaviour
         FlipSprite();
     }
 
+    void UpdateDashing()
+    {
+        //Init Dash
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing)
+        {
+            //myRigidbody.AddForce(new Vector2.left * dashSpeed, ForceMode2D.Impulse);
+            //myRigidbody.velocity = new Vector2(1 * dashSpeed, myRigidbody.velocity.y);
+            StopCoroutine(DashCoroutine());
+            StartCoroutine(DashCoroutine());
+            myAnimator.SetTrigger("gDash!");
+        }
+
+        //switch (dashState)
+        //{
+        //    case DashState.Ready:
+        //        { 
+        //            //Init Dash
+        //            if (Input.GetKeyDown(KeyCode.LeftShift)
+        //                && dashState == DashState.Ready
+        //                && !isGroundRegAttack())
+        //            {
+        //                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x * dashSpeed, myRigidbody.velocity.y);
+        //                dashState = DashState.Dashing;
+        //            }
+        //        }
+        //        break;
+        //    case DashState.Dashing:
+        //        dashTimer -= Time.deltaTime;
+        //        if (dashTimer <= 0f)
+        //        {
+        //            dashTimer = maxDashSpeed;
+        //            dashState = DashState.Cooldown;
+        //        }
+        //        break;
+        //    case DashState.Cooldown:
+        //        dashTimer -= Time.deltaTime;
+        //        if (dashTimer <= 0)
+        //        {
+        //            dashTimer = 0;
+        //            dashState = DashState.Ready;
+        //        }
+        //        break;
+        //}
+    }
+
     /* Depending on the state the character
      * flips the sprite to correctly face the 
      * direction it's moving.
@@ -241,7 +293,7 @@ public class PlayerController : MonoBehaviour
 
     ////////////////////////////////////////////////////////////////////////
     //Check if attack animations are playing
-    bool isRegAttack()
+    bool isGroundRegAttack()
     {
         //if(myAnimator.GetCurrentAnimatorStateInfo(0).IsName("RegAttack"))
         //{
@@ -263,11 +315,30 @@ public class PlayerController : MonoBehaviour
         return (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Crouch_RegAttack"));
     }
     ////////////////////////////////////////////////////////////////////////
+    IEnumerator DashCoroutine() //Coroutine with a single input of a float called boostDur, which we can feed a number when calling
+    {
+        float time = 0.0f;
+        isDashing = true; 
 
+        //Dash at the direction the player is facing
+        Vector2 dashDirection = (isFacingLeft) ? new Vector2(-dashSpeed, myRigidbody.velocity.y) : new Vector2(dashSpeed, myRigidbody.velocity.y);
+        
+        while (dashTimer > time)
+        {
+            Debug.Log(myRigidbody.velocity);
+            time += Time.deltaTime;
+            myRigidbody.velocity = dashDirection;
+            yield return 0; 
+        }
+        
+        //Wait till timer is finished so that the player can dash again
+        yield return new WaitForSeconds(dashTimer);
+        isDashing = false; 
+    }
     /*
     void CancelMovements()
     {
-        if (isRegAttack() || isCrouching)
+        if (isGroundRegAttack() || isCrouching)
         {
             //myRigidbody.constraints = RigidbodyConstraints2D.FreezePositionY;
             moveSpeed = 0;
