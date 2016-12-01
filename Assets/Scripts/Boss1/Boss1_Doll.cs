@@ -15,13 +15,19 @@ public class Boss1_Doll : MonoBehaviour
 
     void Update()
     {
-        if (Time.time > nextFire)
+        /* If the player is alive
+         * fire the bullet AT the player
+         */
+        if(player != null)
         {
-            nextFire = Time.time + fireRate;
-            if(transform.InverseTransformPoint(player.transform.position).x < 0)
-                Instantiate(prefabBullet, transform.position, Quaternion.Euler(0, 0, 180));
-            else
-                Instantiate(prefabBullet, transform.position, Quaternion.identity);
+            if (Time.time > nextFire)
+            {
+                nextFire = Time.time + fireRate;
+                if (transform.InverseTransformPoint(player.transform.position).x < 0)
+                    Instantiate(prefabBullet, transform.position, Quaternion.Euler(0, 0, 180));
+                else
+                    Instantiate(prefabBullet, transform.position, Quaternion.identity);
+            }
         }
     }
 }

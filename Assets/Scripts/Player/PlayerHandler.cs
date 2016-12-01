@@ -5,7 +5,7 @@ public class PlayerHandler : MonoBehaviour
 {
     public enum Estate
     {
-        None,//if the player is not grounded
+        None,
         OnGround,
         OnCrouch,
         OnAir,
@@ -15,8 +15,9 @@ public class PlayerHandler : MonoBehaviour
     //vars
     public int myHealth = 10;
     public Estate curState = Estate.None;
+    protected bool isWall;
 
-    //pcontroler
+    //player controller script
     private PlayerController pController;
     
     void Start ()
@@ -32,32 +33,46 @@ public class PlayerHandler : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        //Debug.DrawRay(transform.position, forward, Color.green);
-        //
-        Vector2 direction = (pController.isFacingLeft) ? Vector2.left : -Vector2.left;
-        Debug.DrawRay(transform.position, direction, Color.green);
-
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction);
-        if (hit.collider.tag == "Ground" && hit.collider != null)
+        ////////////////////////////////////////////////////////////////////////
+        /////Testing raycast :: Does not contribute anything in the code
+        Vector2 facingDirection = (pController.isFacingLeft) ? -transform.right : transform.right;
+        //Debug.DrawRay(transform.position, facingDirection, Color.green);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, facingDirection, Mathf.Infinity, 9);
+        if(hit.collider != null)
         {
-            Debug.Log("hit");
-        }
-        else
-        {
-            Debug.Log("no hit");
+            //Debug.Log("pos: " + hit.transform.position);
+            //Debug.DrawLine(transform.position, hit.transform.position);
+            //if (hit.transform.tag == "Ground")
+            //{
+            //    Debug.Log(hit.transform.tag);
+            //}
+            //else
+            //{
+            //    //Debug.Log("no hit");
+            //}
         }
     }
-    
-    /*
-     * - isGround = true (if) colliding tag "Ground"
-     */
+
+    // - isGround = true (if) colliding tag "Ground" 
     void OnCollisionStay2D(Collision2D col)
     {
         if (col.gameObject.tag == "Ground")
         {
+            Collider2D collider = col.collider;
             if (curState != Estate.OnCrouch)
             {
-                curState = Estate.OnGround;
+                Vector3 contactPoint = col.contacts[0].point;
+                Vector3 center = collider.bounds.center;
+
+                //Debug.DrawLine(contactPoint, new Vector2(center.x, (center.y + (collider.bounds.size.y / 2))));
+                if (contactPoint.y > (center.y + (collider.bounds.size.y / 2)))
+                {
+                    curState = Estate.OnGround;
+                }
+                else
+                {
+                    Debug.Log("not grounded");
+                }
             }
         }
     }
@@ -67,7 +82,7 @@ public class PlayerHandler : MonoBehaviour
      */
     void OnCollisionExit2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Ground")
+        if (col.gameObject.tag == "Ground" && curState == Estate.OnGround)
         {
             curState = Estate.OnAir;
         }

@@ -25,25 +25,27 @@ public class Boss1_Behavior : MonoBehaviour
     {
         curBehavior = EBehavior.None;
         myHealth = GetComponent<Enemy_Handler>().myHealth;
-        GetComponent<EnemyBehavior_FollowTarget>().target = GameObject.Find("Player_Sprite").transform;
+
+        //Set the Boss's target to player so it will follow
+        GetComponent<EnemyBehavior_FollowTarget>().target = GameObject.Find("Player").transform;
+
+        //Start the boss's behavior routine
+        StopCoroutine(BehaviorCoroutine());
+        StartCoroutine(BehaviorCoroutine());
     }
     
     void Update()
     {
-        if (lockCoroutine)
-        {
-            StartCoroutine(BehaviorCoroutine());
-            lockCoroutine = false;
-        }
-
+        //kill the boss if dead
         if (myHealth <= 0)
         {
             StopCoroutine(BehaviorCoroutine());
-            curBehavior = EBehavior.None;
+            Destroy(this.gameObject);
         }
     }
 
-    void GetState()
+    //Plays the current behavior
+    void UpdateState()
     {
         switch (curBehavior)
         {
@@ -76,7 +78,7 @@ public class Boss1_Behavior : MonoBehaviour
                     break;
                 }
         }
-    }   //Plays the current behavior
+    }   
 
     //Attacking states
     void State_Attack1()
@@ -116,37 +118,38 @@ public class Boss1_Behavior : MonoBehaviour
     
     IEnumerator BehaviorCoroutine()
     {
-        while (myHealth > 0)
+        //loop infinitely until the object is destroyed
+        while (true)
         {
-            Debug.Log(this.gameObject.name + ": " + curBehavior);
+            //Debug.Log(this.gameObject.name + ": " + curBehavior);
             yield return new WaitForSeconds(6); 
-            curBehavior = EBehavior.Move;       
-            GetState();                         
+            curBehavior = EBehavior.Move;
+            UpdateState();                         
                                                 
-            Debug.Log(this.gameObject.name + ": " + curBehavior);
+            //Debug.Log(this.gameObject.name + ": " + curBehavior);
             yield return new WaitForSeconds(2); 
-            curBehavior = EBehavior.Attack1;    
-            GetState();                         
+            curBehavior = EBehavior.Attack1;
+            UpdateState();                         
                                                 
-            Debug.Log(this.gameObject.name + ": " + curBehavior);
+            //Debug.Log(this.gameObject.name + ": " + curBehavior);
             yield return new WaitForSeconds(4); 
-            curBehavior = EBehavior.Attack1;    
-            GetState();                         
+            curBehavior = EBehavior.Attack1;
+            UpdateState();                         
                                                 
-            Debug.Log(this.gameObject.name + ": " + curBehavior);
+            //Debug.Log(this.gameObject.name + ": " + curBehavior);
             yield return new WaitForSeconds(1); 
-            curBehavior = EBehavior.Move;       
-            GetState();                         
+            curBehavior = EBehavior.Move;
+            UpdateState();                         
                                                 
-            Debug.Log(this.gameObject.name + ": " + curBehavior);
+            //Debug.Log(this.gameObject.name + ": " + curBehavior);
             yield return new WaitForSeconds(2); 
-            curBehavior = EBehavior.Attack2;    
-            GetState();                         
+            curBehavior = EBehavior.Attack2;
+            UpdateState();                         
                                                 
-            Debug.Log(this.gameObject.name + ": " + curBehavior);
+            //Debug.Log(this.gameObject.name + ": " + curBehavior);
             yield return new WaitForSeconds(1);
             curBehavior = EBehavior.Attack3;
-            GetState();
+            UpdateState();
         }
     }
 }

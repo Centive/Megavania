@@ -3,11 +3,21 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+    //State machine for handling dash
+    private enum DashState
+    {
+        Ready,
+        Dashing,
+        Cooldown
+    }
 
     //variables
     public float maxMoveSpeed = 5f;
     public float moveSpeed = 5f;
     public float jumpPower = 5f;
+    public float dodgeSpeed = 5f;
+    private DashState dashState = DashState.Ready;
+
     public bool isFacingLeft = false;
     public bool isFalling = false;
 
@@ -34,24 +44,29 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //Enable Controls
-        Controls();
+        //Enable UpdateControls
+        UpdateControls();
 
+        //Currently checks if the player's y velocity is decreasing. Play falling animation
         myAnimator.SetFloat("VelocityY", myRigidbody.velocity.y);
     }
 
-    void Controls()
+    void UpdateControls()
     {
-        //Enable animations
+        //Enable animations depending on the state
         myAnimator.SetInteger("State", (int)pHandler.curState);
 
-        //Turn isKinematic to false whenever the player is not flying
+        //Whenever the player is not flying, turn on the gravity
         if (pHandler.curState != PlayerHandler.Estate.OnFly)
         {
             myRigidbody.gravityScale = 1;
         }
 
-        //
+        //Input
+        float xInput = Input.GetAxisRaw("Horizontal");
+        float yInput = Input.GetAxisRaw("Vertical");
+
+        //Update the controls for each state
         switch (pHandler.curState)
         {
             case PlayerHandler.Estate.None:
@@ -61,157 +76,127 @@ public class PlayerController : MonoBehaviour
                 }
             case PlayerHandler.Estate.OnGround:
                 {
-                    MovementsOnGround();
-                    AttacksOnGround();
+                    //Move rigidbody on x-axis
+                    myRigidbody.velocity = new Vector2(xInput * moveSpeed, myRigidbody.velocity.y);
+                    myAnimator.SetFloat("Speed", Mathf.Abs(myRigidbody.velocity.x));
+
+                    //Init Crouch
+                    if (yInput < 0)
+                    {
+                        pHandler.curState = PlayerHandler.Estate.OnCrouch;
+                    }
+                    else
+                    {
+                        pHandler.curState = PlayerHandler.Estate.OnGround;
+                    }
+
+                    //Init Jump
+                    if (Input.GetKeyDown(KeyCode.K))//if (Input.GetButtonDown("XButton"))
+                    {
+                        myAnimator.SetTrigger("jump!");
+                        myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpPower);
+                    }
+
+                    //
+
+                    //Melee Attack
+                    //Attack only when the animation is NOT playing - !isRegAttack()
+                    if (Input.GetKeyDown(KeyCode.J) && !isRegAttack())//if (Input.GetButtonDown("SquareButton") && !isRegAttack())
+                    {
+                        myAnimator.SetTrigger("regAttack!");
+                    }
+
+                    //Shoots a knife projectile
+                    if (Input.GetKeyDown(KeyCode.L))//if (Input.GetButtonDown("RightBumper"))
+                    {
+                        Instantiate(knifePrefab, transform.position, (Quaternion.identity));
+                    }
                     break;
                 }
             case PlayerHandler.Estate.OnCrouch:
                 {
-                    MovementsOnCrouch();
-                    AttacksOnCrouch();
+                    myRigidbody.velocity = new Vector2(0, myRigidbody.velocity.y);
+                    //Init OnGround
+                    if (yInput >= 0)
+                    {
+                        pHandler.curState = PlayerHandler.Estate.OnGround;
+                    }
+
+                    //
+
+                    //Melee Attack
+                    //Attack only when the animation is NOT playing - !isCrouchRegAttack()
+                    if (Input.GetKeyDown(KeyCode.J) && !isCrouchRegAttack())//if (Input.GetButtonDown("SquareButton") && !isCrouchRegAttack())
+                    {
+                        myAnimator.SetTrigger("crouchAttack!");
+                    }
                     break;
-                }//movOnGround & atks
+                }
             case PlayerHandler.Estate.OnAir:
                 {
-                    MovementsOnAir();
-                    AttacksOnAir();
+                    //Init Fly
+                    if (Input.GetKeyDown(KeyCode.K))//if (Input.GetButtonDown("XButton"))
+                    {
+                        pHandler.curState = PlayerHandler.Estate.OnFly;
+                    }
+
+                    //Move rigidbody on x-axis
+                    myRigidbody.velocity = new Vector2(xInput * moveSpeed, myRigidbody.velocity.y);
+
+                    //
+
+                    //Melee Attack
+                    //Attack only when the animation is NOT playing - !isCrouchRegAttack()
+                    if (Input.GetKeyDown(KeyCode.J))//if (Input.GetButtonDown("SquareButton"))
+                    {
+                        myAnimator.SetTrigger("airRegAttack!");
+                    }
+
+                    //Shoots a knife projectile
+                    if (Input.GetKeyDown(KeyCode.L))//if (Input.GetButtonDown("RightBumper"))
+                    {
+                        Instantiate(knifePrefab, transform.position, (Quaternion.identity));
+                    }
                     break;
-                }//movOnAir & atks
+                }
             case PlayerHandler.Estate.OnFly:
                 {
-                    MovementsOnFly();
-                    AttacksOnFly();
+                    //Always true when flying
+                    myRigidbody.gravityScale = 0;
+
+                    //Init OnAir
+                    if (Input.GetKeyUp(KeyCode.K))//if (Input.GetButtonUp("XButton"))
+                    {
+                        pHandler.curState = PlayerHandler.Estate.OnAir;
+                    }
+                    
+                    //Move
+                    //Move rigidbody on x/y axis
+                    myRigidbody.velocity = new Vector2(xInput * moveSpeed, yInput * moveSpeed);
+
+                    //Shoots a knife projectile
+                    if (Input.GetKeyDown(KeyCode.L))//if (Input.GetButtonDown("RightBumper"))
+                    {
+                        Instantiate(knifePrefab, transform.position, (Quaternion.identity));
+                    }
+
+                    //Use the correct fly animation. This is due to freezing where the player faces
+                    myAnimator.SetInteger("xInput", (isFacingLeft) ? (int)xInput * -1 : (int)xInput);
                     break;
-                }//movOnFly & atks
+                }
         }
 
-        //
+        /* Depending on the state the character
+         * flips the sprite to correctly face the 
+         * direction it's moving.
+         */
         FlipSprite();
     }
 
-    ////////////////////////////////////////////////////////////////////////
-    void MovementsOnGround()
-    {
-        //Input
-        float xInput = Input.GetAxisRaw("Horizontal");
-        float yInput = Input.GetAxisRaw("Vertical");
-
-        //Move rigidbody on x-axis
-        myRigidbody.velocity = new Vector2(xInput * moveSpeed, myRigidbody.velocity.y);
-        myAnimator.SetFloat("Speed", Mathf.Abs(myRigidbody.velocity.x));
-
-        //Init Crouch
-        if (yInput < 0)
-        {
-            pHandler.curState = PlayerHandler.Estate.OnCrouch;
-        }
-        else
-        {
-            pHandler.curState = PlayerHandler.Estate.OnGround;
-        }
-
-        //Init Jump
-        if(Input.GetKeyDown(KeyCode.K))//if (Input.GetButtonDown("XButton"))
-        {
-            myAnimator.SetTrigger("jump!");
-            myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpPower);
-        }
-
-    }
-    void MovementsOnCrouch()
-    {
-        float yInput = Input.GetAxisRaw("Vertical");
-
-        //Init OnGround
-        if (yInput >= 0)
-        {
-            pHandler.curState = PlayerHandler.Estate.OnGround;
-        }
-    }
-    void MovementsOnAir()
-    {
-        //Init Fly
-        if(Input.GetKeyDown(KeyCode.K))//if (Input.GetButtonDown("XButton"))
-        {
-            pHandler.curState = PlayerHandler.Estate.OnFly;
-        }
-
-        //Input
-        float xInput = Input.GetAxisRaw("Horizontal");
-
-        //Move rigidbody on x-axis
-        myRigidbody.velocity = new Vector2(xInput * moveSpeed, myRigidbody.velocity.y);
-    }
-    void MovementsOnFly()
-    {
-        //Always true when flying
-        myRigidbody.gravityScale = 0;
-
-        //Init OnAir
-        if (Input.GetKeyUp(KeyCode.K))//if (Input.GetButtonUp("XButton"))
-        {
-            pHandler.curState = PlayerHandler.Estate.OnAir;
-        }
-
-        //Input
-        float xInput = Input.GetAxisRaw("Horizontal");
-        float yInput = Input.GetAxisRaw("Vertical");
-
-        //Move
-        //Move rigidbody on x/y axis
-        myRigidbody.velocity = new Vector2(xInput * moveSpeed, yInput * moveSpeed);
-
-        myAnimator.SetInteger("xInput", (isFacingLeft) ? (int)xInput * -1 : (int)xInput);
-    }
-
-    void AttacksOnGround()
-    {
-        //Melee Attack
-        //Attack only when the animation is NOT playing - !isRegAttack()
-        if (Input.GetKeyDown(KeyCode.J) && !isRegAttack())//if (Input.GetButtonDown("SquareButton") && !isRegAttack())
-        {
-            myAnimator.SetTrigger("regAttack!");
-        }
-
-        //Shoots a knife projectile
-        if (Input.GetKeyDown(KeyCode.L))//if (Input.GetButtonDown("RightBumper"))
-        {
-            Instantiate(knifePrefab, transform.position, (Quaternion.identity));
-        }
-    }
-    void AttacksOnCrouch()
-    {
-        //Melee Attack
-        //Attack only when the animation is NOT playing - !isCrouchRegAttack()
-        if (Input.GetKeyDown(KeyCode.J) && !isCrouchRegAttack())//if (Input.GetButtonDown("SquareButton") && !isCrouchRegAttack())
-        {
-            myAnimator.SetTrigger("crouchAttack!");
-        }
-    }
-    void AttacksOnAir()
-    {
-        //Melee Attack
-        //Attack only when the animation is NOT playing - !isCrouchRegAttack()
-        if (Input.GetKeyDown(KeyCode.J))//if (Input.GetButtonDown("SquareButton"))
-        {
-            myAnimator.SetTrigger("airRegAttack!");
-        }
-
-        //Shoots a knife projectile
-        if (Input.GetKeyDown(KeyCode.L))//if (Input.GetButtonDown("RightBumper"))
-        {
-            Instantiate(knifePrefab, transform.position, (Quaternion.identity));
-        }
-    }
-    void AttacksOnFly()
-    {
-        //Shoots a knife projectile
-        if (Input.GetKeyDown(KeyCode.L))//if (Input.GetButtonDown("RightBumper"))
-        {
-            Instantiate(knifePrefab, transform.position, (Quaternion.identity));
-        }
-    }
-    ////////////////////////////////////////////////////////////////////////
+    /* Depending on the state the character
+     * flips the sprite to correctly face the 
+     * direction it's moving.
+     */
     void FlipSprite()
     {
         switch (pHandler.curState)
@@ -253,8 +238,9 @@ public class PlayerController : MonoBehaviour
                 }
         }
     }
+
     ////////////////////////////////////////////////////////////////////////
-    //Check if animations are playing
+    //Check if attack animations are playing
     bool isRegAttack()
     {
         //if(myAnimator.GetCurrentAnimatorStateInfo(0).IsName("RegAttack"))
