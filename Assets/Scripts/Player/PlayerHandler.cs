@@ -15,7 +15,7 @@ public class PlayerHandler : MonoBehaviour
     //vars
     public int myHealth = 10;
     public Estate curState = Estate.None;
-    protected bool isWall;
+    protected bool isWall = false;
 
     //player controller script
     private PlayerController pController;
@@ -93,7 +93,7 @@ public class PlayerHandler : MonoBehaviour
      */
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "EnemyHit")
+        if (col.gameObject.tag == "EnemyHit" && !pController.isDashing)
         {
             myHealth--;
         }

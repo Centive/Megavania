@@ -3,24 +3,28 @@ using System.Collections;
 
 public class Boss1_Bullet1_Behavior : MonoBehaviour
 {
-    public float MaxBulletDSpeed = 0.7f;
-    public float MaxBulletFSpeed = 2f;
+    public float MaxBulletDSpeed;
+    public float MaxBulletFSpeed;
     public float bulletSpeed;
-    public float killBulletTimer = 0.2f;
-    public float bulletDelay = 1f;
+    public float curKillTimer;
+    public float curDelay;
+    public float maxKillTimer;
+    public float maxDelay;
 
     // Use this for initialization
     void Start()
     {
         bulletSpeed = MaxBulletDSpeed;
+        curKillTimer = maxKillTimer;
+        curDelay = maxDelay;
     }
 
     // Update is called once per frame
     void Update()
     {
-        bulletDelay -= Time.deltaTime;
+        curDelay -= Time.deltaTime;
 
-        if (bulletDelay <= 0f)
+        if (curDelay <= 0f)
             bulletSpeed = MaxBulletFSpeed;
 
         //move bullet
@@ -32,8 +36,8 @@ public class Boss1_Bullet1_Behavior : MonoBehaviour
 
 
         //Kill bullet
-        killBulletTimer -= Time.deltaTime;
-        if (killBulletTimer <= 0)
+        curKillTimer -= Time.deltaTime;
+        if (curKillTimer <= 0)
         {
             Destroy(gameObject);
         }

@@ -122,7 +122,7 @@ public class Boss1_Behavior : MonoBehaviour
         while (true)
         {
             //Debug.Log(this.gameObject.name + ": " + curBehavior);
-            yield return new WaitForSeconds(6); 
+            yield return new WaitForSeconds(3); 
             curBehavior = EBehavior.Move;
             UpdateState();                         
                                                 

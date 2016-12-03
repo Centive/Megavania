@@ -3,22 +3,15 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    //State machine for handling dash
-    //private enum DashState
-    //{
-    //    Ready,
-    //    Dashing,
-    //    Cooldown
-    //}
-
     //variables
     public float maxMoveSpeed = 5f;
     public float moveSpeed = 5f;
     public float jumpPower = 5f;
     public float maxDashSpeed = 0f;
     public float dashTimer = 0f;
-    private float dashSpeed = 0f;
-    private bool isDashing = false;
+    public bool enableControls = true;
+    public bool isDashing = false;
+    public float dashSpeed = 0f;
     //private DashState dashState = DashState.Ready;
 
     public bool isFacingLeft = false;
@@ -48,8 +41,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //Enable UpdateControls
-        UpdateControls();
+        if(enableControls)
+        {
+            //Enable UpdateControls
+            UpdateControls();
+        }
 
         //Currently checks if the player's y velocity is decreasing. Play falling animation
         myAnimator.SetFloat("VelocityY", myRigidbody.velocity.y);
@@ -57,8 +53,13 @@ public class PlayerController : MonoBehaviour
 
     void UpdateControls()
     {
-        //Enable animations depending on the state
+        //Input
+        float xInput = Input.GetAxisRaw("Horizontal");
+        float yInput = Input.GetAxisRaw("Vertical");
+
+        //Enable animations
         myAnimator.SetInteger("State", (int)pHandler.curState);
+        myAnimator.SetBool("isDashing", isDashing);
 
         //Whenever the player is not flying, turn on the gravity
         if (pHandler.curState != PlayerHandler.Estate.OnFly)
@@ -66,9 +67,6 @@ public class PlayerController : MonoBehaviour
             myRigidbody.gravityScale = 1;
         }
 
-        //Input
-        float xInput = Input.GetAxisRaw("Horizontal");
-        float yInput = Input.GetAxisRaw("Vertical");
 
         //Update the controls for each state
         switch (pHandler.curState)
@@ -102,7 +100,12 @@ public class PlayerController : MonoBehaviour
                     }
 
                     //init dash
-                    UpdateDashing();
+                    if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing)
+                    {
+                        StopCoroutine(DashCoroutine(xInput));
+                        StartCoroutine(DashCoroutine(xInput));
+                        myAnimator.SetTrigger("gDash!");
+                    }
 
                     //
 
@@ -150,6 +153,14 @@ public class PlayerController : MonoBehaviour
                     //Move rigidbody on x-axis
                     myRigidbody.velocity = new Vector2(xInput * moveSpeed, myRigidbody.velocity.y);
 
+                    //init dash
+                    if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing)
+                    {
+                        StopCoroutine(DashCoroutine(xInput));
+                        StartCoroutine(DashCoroutine(xInput));
+                        myAnimator.SetTrigger("aDash!");
+                    }
+
                     //
 
                     //Melee Attack
@@ -176,7 +187,15 @@ public class PlayerController : MonoBehaviour
                     {
                         pHandler.curState = PlayerHandler.Estate.OnAir;
                     }
-                    
+
+                    //init dash
+                    if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing)
+                    {
+                        StopCoroutine(DashCoroutine(xInput));
+                        StartCoroutine(DashCoroutine(xInput));
+                        myAnimator.SetTrigger("fDash!");
+                    }
+
                     //Move
                     //Move rigidbody on x/y axis
                     myRigidbody.velocity = new Vector2(xInput * moveSpeed, yInput * moveSpeed);
@@ -199,52 +218,7 @@ public class PlayerController : MonoBehaviour
          */
         FlipSprite();
     }
-
-    void UpdateDashing()
-    {
-        //Init Dash
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing)
-        {
-            //myRigidbody.AddForce(new Vector2.left * dashSpeed, ForceMode2D.Impulse);
-            //myRigidbody.velocity = new Vector2(1 * dashSpeed, myRigidbody.velocity.y);
-            StopCoroutine(DashCoroutine());
-            StartCoroutine(DashCoroutine());
-            myAnimator.SetTrigger("gDash!");
-        }
-
-        //switch (dashState)
-        //{
-        //    case DashState.Ready:
-        //        { 
-        //            //Init Dash
-        //            if (Input.GetKeyDown(KeyCode.LeftShift)
-        //                && dashState == DashState.Ready
-        //                && !isGroundRegAttack())
-        //            {
-        //                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x * dashSpeed, myRigidbody.velocity.y);
-        //                dashState = DashState.Dashing;
-        //            }
-        //        }
-        //        break;
-        //    case DashState.Dashing:
-        //        dashTimer -= Time.deltaTime;
-        //        if (dashTimer <= 0f)
-        //        {
-        //            dashTimer = maxDashSpeed;
-        //            dashState = DashState.Cooldown;
-        //        }
-        //        break;
-        //    case DashState.Cooldown:
-        //        dashTimer -= Time.deltaTime;
-        //        if (dashTimer <= 0)
-        //        {
-        //            dashTimer = 0;
-        //            dashState = DashState.Ready;
-        //        }
-        //        break;
-        //}
-    }
-
+    
     /* Depending on the state the character
      * flips the sprite to correctly face the 
      * direction it's moving.
@@ -315,17 +289,34 @@ public class PlayerController : MonoBehaviour
         return (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Crouch_RegAttack"));
     }
     ////////////////////////////////////////////////////////////////////////
-    IEnumerator DashCoroutine() //Coroutine with a single input of a float called boostDur, which we can feed a number when calling
+    IEnumerator DashCoroutine(float xInput)
     {
         float time = 0.0f;
-        isDashing = true; 
+        isDashing = true;
 
-        //Dash at the direction the player is facing
-        Vector2 dashDirection = (isFacingLeft) ? new Vector2(-dashSpeed, myRigidbody.velocity.y) : new Vector2(dashSpeed, myRigidbody.velocity.y);
-        
+        if (xInput != 0f)
+        {
+            dashSpeed += 1.5f;
+        }
+        Vector2 dashDirection;
+        if (pHandler.curState == PlayerHandler.Estate.OnFly)
+        {
+            //Dash at the direction the player is facing
+            dashDirection = (xInput < 0) ? new Vector2(-dashSpeed, myRigidbody.velocity.y)
+                : new Vector2(dashSpeed, myRigidbody.velocity.y);
+        }
+        else
+        {
+            //Dash at the direction the player is facing
+            dashDirection = (isFacingLeft) ? new Vector2(-dashSpeed, myRigidbody.velocity.y)
+                : new Vector2(dashSpeed, myRigidbody.velocity.y);
+        }
+
+        //Handles animation transition after dashing
+        myAnimator.SetInteger("xInput", Mathf.Abs((int)xInput));
+
         while (dashTimer > time)
         {
-            Debug.Log(myRigidbody.velocity);
             time += Time.deltaTime;
             myRigidbody.velocity = dashDirection;
             yield return 0; 
@@ -333,6 +324,8 @@ public class PlayerController : MonoBehaviour
         
         //Wait till timer is finished so that the player can dash again
         yield return new WaitForSeconds(dashTimer);
+        dashSpeed = maxDashSpeed;
+        myAnimator.SetInteger("xInput", 0);
         isDashing = false; 
     }
     /*

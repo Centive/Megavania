@@ -20,9 +20,11 @@ public class EnemyBehavior_FollowTarget : MonoBehaviour
         {
             if (isFollowing)
             {
-                transform.position = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y),
+                Vector2 test = Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y),
                                                             new Vector2(target.position.x, target.position.y + yOffset),
                                                             mySpeed * Time.deltaTime);
+                //Debug.Log(test);
+                transform.position = test;
             }
         }
     }

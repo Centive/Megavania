@@ -6,7 +6,7 @@ public class ShowDebugLogs : MonoBehaviour
 
     public int logCap = 20;
     private int curLogs = 0;
-    private int numDuplicates = 0;
+    private int numDuplicates = 1;
     private string output = "";
     private string myLog = "";
     private string lastLogString = "";
