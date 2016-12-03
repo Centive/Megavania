@@ -29,7 +29,7 @@ public class PlayerHandler : MonoBehaviour
     {
 	    if(myHealth <= 0)
         {
-            Debug.Log(this.gameObject + ": is Dead");
+            //Debug.Log(this.gameObject + ": is Dead");
             Destroy(this.gameObject);
         }
 
@@ -64,15 +64,17 @@ public class PlayerHandler : MonoBehaviour
                 Vector3 contactPoint = col.contacts[0].point;
                 Vector3 center = collider.bounds.center;
 
-                //Debug.DrawLine(contactPoint, new Vector2(center.x, (center.y + (collider.bounds.size.y / 2))));
+                Debug.DrawLine(contactPoint, new Vector2(center.x, (center.y + (collider.bounds.size.y / 2))));
                 if (contactPoint.y > (center.y + (collider.bounds.size.y / 2)))
                 {
                     curState = Estate.OnGround;
                 }
-                else
-                {
-                    Debug.Log("not grounded");
-                }
+
+                //WARNING
+                //else
+                //{
+                //    curState = Estate.OnAir;
+                //}
             }
         }
     }

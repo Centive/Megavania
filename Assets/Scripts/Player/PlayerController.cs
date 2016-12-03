@@ -319,7 +319,7 @@ public class PlayerController : MonoBehaviour
         {
             time += Time.deltaTime;
             myRigidbody.velocity = dashDirection;
-            yield return 0; 
+            yield return 0;
         }
         
         //Wait till timer is finished so that the player can dash again
